@@ -4,6 +4,7 @@ import HeroSection from './components/sections/HeroSection'
 import MissionControl from './components/sections/MissionControl'
 import AIArsenal from './components/sections/AIArsenal'
 import TechnicalCapabilities from './components/sections/TechnicalCapabilities'
+import MissionPortfolio from './components/sections/MissionPortfolio'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <MissionControl />
         <AIArsenal />
         <TechnicalCapabilities />
+        <MissionPortfolio />
       </main>
     </div>
   )
