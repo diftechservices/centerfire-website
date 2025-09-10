@@ -4,39 +4,67 @@ function Hero() {
       <div className="hero-container">
         <div className="hero-content">
           <div className="hero-text">
+            <div className="tech-indicator">
+              <span className="status-dot"></span>
+              <span className="status-text">Systems Online</span>
+            </div>
+            <div className="stencil-text" style={{fontSize: '0.9rem', marginBottom: '0.5rem'}}>
+              CLASSIFIED: LEVEL 7 CLEARANCE
+            </div>
             <h1 className="hero-title">
-              Technical Solutions
-              <span className="hero-highlight"> Built on Values</span>
+              AI-Powered Solutions
+              <span className="hero-highlight"> Built Right</span>
             </h1>
             <p className="hero-subtitle">
-              Full-service technical solutions for firearms businesses and companies that champion freedom. 
-              US-based team with aligned values and uncompromising expertise.
+              Advanced technology built by Americans who understand your business. 
+              We choose our clients carefully - no corporate virtue signaling, no political lectures, just exceptional results.
             </p>
             <div className="hero-badges">
-              <span className="badge">Marine Corps Veteran Owned</span>
-              <span className="badge">100% US-Based Team</span>
+              <span className="badge">Veteran-Owned & Operated</span>
+              <span className="badge">AI-Enhanced Development</span>
               <span className="badge">Values-Aligned Partners</span>
             </div>
             <div className="hero-cta">
               <a href="#contact" className="cta-primary">Start Your Project</a>
-              <a href="#services" className="cta-secondary">Our Services</a>
+              <a href="#services" className="cta-secondary">View Capabilities</a>
             </div>
           </div>
           <div className="hero-visual">
-            <div className="hero-card">
-              <div className="card-icon">⚡</div>
-              <h3>Fast & Secure</h3>
-              <p>Modern tech stack with enterprise security</p>
+            <div className="hero-card tactical-corners">
+              <div className="card-circuit-bg"></div>
+              <div className="card-content">
+                <div className="card-icon tactical-icon">⚡</div>
+                <h3>AI-Enhanced Development</h3>
+                <p>Machine learning that adapts and evolves with your business</p>
+                <div className="card-status">
+                  <span className="status-dot"></span>
+                  <span className="card-status-text">ACTIVE</span>
+                </div>
+              </div>
             </div>
-            <div className="hero-card">
-              <div className="card-icon">🎯</div>
-              <h3>Mission-Focused</h3>
-              <p>Solutions that fit your business goals</p>
+            <div className="hero-card tactical-corners">
+              <div className="card-circuit-bg"></div>
+              <div className="card-content">
+                <div className="card-icon tactical-icon">⚔️</div>
+                <h3>Enterprise Security</h3>
+                <p>Military-grade protection without the bureaucracy</p>
+                <div className="card-status">
+                  <span className="status-dot"></span>
+                  <span className="card-status-text">SECURED</span>
+                </div>
+              </div>
             </div>
-            <div className="hero-card">
-              <div className="card-icon">🇺🇸</div>
-              <h3>American Values</h3>
-              <p>Team members who share your principles</p>
+            <div className="hero-card tactical-corners">
+              <div className="card-circuit-bg"></div>
+              <div className="card-content">
+                <div className="card-icon tactical-icon">🎯</div>
+                <h3>American-Made</h3>
+                <p>US-based team, traditional work ethic, modern results</p>
+                <div className="card-status">
+                  <span className="status-dot"></span>
+                  <span className="card-status-text">DEPLOYED</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
