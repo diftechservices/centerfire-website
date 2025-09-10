@@ -16,14 +16,11 @@ const Header = () => {
           <div className="flex items-center space-x-8">
             {/* Logo */}
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-fire-orange rounded-lg flex items-center justify-center">
-                <i className="fa-solid fa-crosshairs text-tactical-dark text-lg"></i>
-              </div>
-              <div className="font-display font-bold text-xl">
-                <span className="text-fire-orange">CENTER</span>
-                <span className="text-white">FIRE</span>
-                <div className="text-xs text-gray-400 font-tactical">DIGITAL</div>
-              </div>
+              <img 
+                src="/src/assets/images/centerfireweblogo.jpg" 
+                alt="Centerfire Digital" 
+                className="h-8 w-auto"
+              />
             </div>
             
             {/* Navigation Menu */}
