@@ -259,7 +259,7 @@ const IntelligenceHub = () => {
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-gray-300 text-sm">Response Time</span>
-                  <span className="text-steel-blue font-bold">< 15min</span>
+                  <span className="text-steel-blue font-bold">&lt; 15min</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-gray-300 text-sm">Team Status</span>
