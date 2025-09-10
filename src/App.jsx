@@ -3,6 +3,7 @@ import Header from './components/sections/Header'
 import HeroSection from './components/sections/HeroSection'
 import MissionControl from './components/sections/MissionControl'
 import AIArsenal from './components/sections/AIArsenal'
+import TechnicalCapabilities from './components/sections/TechnicalCapabilities'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <HeroSection />
         <MissionControl />
         <AIArsenal />
+        <TechnicalCapabilities />
       </main>
     </div>
   )
