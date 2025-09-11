@@ -1,5 +1,5 @@
 import { Button, Badge } from '../ui'
-import { useWordPressPage } from '../../hooks/useWordPressPage'
+import { useWordPressPage } from '../../hooks/useWordPress'
 
 const ACFTeamSection = ({ pageSlug }) => {
   const { acf, loading, error } = useWordPressPage(pageSlug)
