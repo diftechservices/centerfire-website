@@ -22,7 +22,11 @@ Field Group: Homepage Hero
     ├── Icon Color (Text) - icon_color [text-fire-orange]
     ├── Background Color (Text) - bg_color [bg-fire-orange/20]  
     ├── Title (Text) - title
-    └── Description (Textarea) - description
+    ├── Description (Textarea) - description
+    ├── Features (Repeater) - features [OPTIONAL - for bullet points]
+    │   └── Feature Text (Text) - feature_text
+    ├── CTA Text (Text) - cta_text [OPTIONAL - button text]
+    └── CTA URL (URL) - cta_url [OPTIONAL - button link]
 ```
 
 ## Example Content (Current Styling):
@@ -49,28 +53,34 @@ CTA Button 2:
 - Style: Secondary button with play icon
 ```
 
-### Feature Cards (Repeater):
+### Feature Cards (Repeater) - Enhanced but Backward Compatible:
 ```
-Card 1:
+Card 1 (Basic - maintains exact current appearance):
 - Icon: fa-solid fa-brain
 - Icon Color: text-fire-orange
 - Background Color: bg-fire-orange/20
 - Title: AI Arsenal
 - Description: Advanced machine learning and AI solutions deployed with surgical precision
 
-Card 2:
+Card 2 (Enhanced - with optional features and CTA):
 - Icon: fa-solid fa-shield-halved
 - Icon Color: text-steel-blue
 - Background Color: bg-steel-blue/20
 - Title: Secure Operations
 - Description: Fortress-grade security protocols protecting your digital assets
+- Features (optional):
+  • End-to-end Encryption
+  • Threat Detection
+  • 24/7 Monitoring
+- CTA Text: Secure Now
+- CTA URL: /services/security
 
-Card 3:
+Card 3 (Longer description - expands gracefully):
 - Icon: fa-solid fa-crosshairs
 - Icon Color: text-tactical-green
 - Background Color: bg-tactical-green/20
 - Title: Target Acquisition
-- Description: Laser-focused solutions that hit objectives with zero compromise
+- Description: Laser-focused solutions that hit objectives with zero compromise. Our precision targeting methodology ensures maximum efficiency and strategic advantage in every engagement.
 ```
 
 ## Important Design Notes:
@@ -84,8 +94,15 @@ Card 3:
 ### Layout Preservation:
 - Maintains tactical grid background pattern
 - Preserves "TACTICAL TECH OPERATIONS" badge with status indicators
-- Keeps exact spacing and proportions
+- Keeps exact spacing and proportions  
 - Two-button CTA layout in flex row on desktop, stacked on mobile
+
+### Enhanced Content Support:
+- **Backward Compatible**: Existing content displays exactly the same
+- **Flexible Heights**: Cards expand gracefully to accommodate longer content
+- **Optional Features**: Bullet point lists appear only when content is added
+- **Optional CTAs**: Individual card buttons appear only when configured
+- **Equal Heights**: Grid ensures all cards in a row match the tallest card
 
 ### Button Behavior:
 - Both buttons are configurable via ACF URLs

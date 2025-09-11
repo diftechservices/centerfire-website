@@ -126,13 +126,38 @@ const ACFHeroSection = ({ pageSlug = 'homepage' }) => {
           {displayCards.map((card, index) => (
             <div 
               key={index}
-              className="bg-tactical-gray/30 backdrop-blur-sm border border-tactical-light rounded-xl p-6"
+              className="bg-tactical-gray/30 backdrop-blur-sm border border-tactical-light rounded-xl p-6 h-full flex flex-col"
             >
               <div className={`w-12 h-12 ${card.bg_color || 'bg-fire-orange/20'} rounded-lg flex items-center justify-center mb-4`}>
                 <i className={`${card.icon || 'fa-solid fa-star'} ${card.icon_color || 'text-fire-orange'} text-xl`}></i>
               </div>
               <h3 className="font-display font-bold text-xl mb-2 text-white">{card.title}</h3>
-              <p className="text-gray-400">{card.description}</p>
+              <p className="text-gray-400 flex-grow">{card.description}</p>
+              
+              {/* Optional additional content */}
+              {card.features && card.features.length > 0 && (
+                <div className="mt-4 pt-4 border-t border-tactical-light/20">
+                  <ul className="space-y-1">
+                    {card.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-start space-x-2 text-sm text-gray-400">
+                        <span className="text-tactical-green mt-1">•</span>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              
+              {card.cta_text && (
+                <div className="mt-4">
+                  <button 
+                    className="text-sm font-semibold text-fire-orange hover:text-white transition-colors"
+                    onClick={() => card.cta_url && (window.location.href = card.cta_url)}
+                  >
+                    {card.cta_text} →
+                  </button>
+                </div>
+              )}
             </div>
           ))}
         </div>
