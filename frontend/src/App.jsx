@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import './index.css'
 import Header from './components/sections/Header'
+import ACFFooter from './components/acf/ACFFooter'
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import DynamicAboutPage from './pages/DynamicAboutPage'
@@ -29,6 +30,9 @@ function App() {
           <Route path="/wp-test" element={<WordPressTestPage />} />
         </Routes>
       </main>
+      
+      {/* Footer */}
+      <ACFFooter pageSlug="homepage" />
     </div>
   )
 }
