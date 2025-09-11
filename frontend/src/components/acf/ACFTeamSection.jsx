@@ -63,6 +63,27 @@ const ACFTeamSection = ({ pageSlug }) => {
     return members
   }
 
+  // Process Join Team Benefits from ACF flat structure
+  const processJoinTeamBenefits = (acfData) => {
+    const benefits = []
+    let benefitIndex = 0
+    
+    while (acfData[`join_team_benefits_${benefitIndex}_title`]) {
+      const benefit = {
+        icon: acfData[`join_team_benefits_${benefitIndex}_icon`],
+        icon_color: acfData[`join_team_benefits_${benefitIndex}_icon_color`],
+        icon_bg: acfData[`join_team_benefits_${benefitIndex}_icon_bg`],
+        title: acfData[`join_team_benefits_${benefitIndex}_title`],
+        description: acfData[`join_team_benefits_${benefitIndex}_description`]
+      }
+      
+      benefits.push(benefit)
+      benefitIndex++
+    }
+    
+    return benefits
+  }
+
   // Default team members (fallback)
   const defaultTeamMembers = [
     {
@@ -139,8 +160,35 @@ const ACFTeamSection = ({ pageSlug }) => {
     }
   ]
 
+  // Default join team benefits (fallback)
+  const defaultJoinTeamBenefits = [
+    {
+      icon: 'fa-solid fa-brain',
+      icon_color: 'text-fire-orange',
+      icon_bg: 'bg-fire-orange/20',
+      title: 'Elite Expertise',
+      description: 'Top 1% technical talent with proven track records'
+    },
+    {
+      icon: 'fa-solid fa-rocket',
+      icon_color: 'text-steel-blue', 
+      icon_bg: 'bg-steel-blue/20',
+      title: 'Mission Critical',
+      description: 'Work on high-impact projects that shape the future'
+    },
+    {
+      icon: 'fa-solid fa-trophy',
+      icon_color: 'text-tactical-green',
+      icon_bg: 'bg-tactical-green/20', 
+      title: 'Victory Rewards',
+      description: 'Competitive compensation and equity opportunities'
+    }
+  ]
+
   const acfTeamMembers = processTeamMembers(acf)
+  const acfJoinTeamBenefits = processJoinTeamBenefits(acf)
   const displayTeamMembers = acfTeamMembers.length > 0 ? acfTeamMembers : defaultTeamMembers
+  const displayJoinTeamBenefits = acfJoinTeamBenefits.length > 0 ? acfJoinTeamBenefits : defaultJoinTeamBenefits
 
   return (
     <section className="py-20 bg-tactical-dark">
@@ -253,29 +301,15 @@ const ACFTeamSection = ({ pageSlug }) => {
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <div className="text-center">
-                <div className="w-12 h-12 bg-fire-orange/20 rounded-lg flex items-center justify-center mx-auto mb-3">
-                  <i className="fa-solid fa-brain text-fire-orange"></i>
+              {displayJoinTeamBenefits.map((benefit, index) => (
+                <div key={index} className="text-center">
+                  <div className={`w-12 h-12 ${benefit.icon_bg || 'bg-fire-orange/20'} rounded-lg flex items-center justify-center mx-auto mb-3`}>
+                    <i className={`${benefit.icon || 'fa-solid fa-star'} ${benefit.icon_color || 'text-fire-orange'}`}></i>
+                  </div>
+                  <h4 className="font-bold text-white mb-2">{benefit.title}</h4>
+                  <p className="text-gray-300 text-sm">{benefit.description}</p>
                 </div>
-                <h4 className="font-bold text-white mb-2">Elite Expertise</h4>
-                <p className="text-gray-300 text-sm">Top 1% technical talent with proven track records</p>
-              </div>
-              
-              <div className="text-center">
-                <div className="w-12 h-12 bg-steel-blue/20 rounded-lg flex items-center justify-center mx-auto mb-3">
-                  <i className="fa-solid fa-rocket text-steel-blue"></i>
-                </div>
-                <h4 className="font-bold text-white mb-2">Mission Critical</h4>
-                <p className="text-gray-300 text-sm">Work on high-impact projects that shape the future</p>
-              </div>
-              
-              <div className="text-center">
-                <div className="w-12 h-12 bg-tactical-green/20 rounded-lg flex items-center justify-center mx-auto mb-3">
-                  <i className="fa-solid fa-trophy text-tactical-green"></i>
-                </div>
-                <h4 className="font-bold text-white mb-2">Victory Rewards</h4>
-                <p className="text-gray-300 text-sm">Competitive compensation and equity opportunities</p>
-              </div>
+              ))}
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
