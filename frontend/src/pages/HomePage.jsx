@@ -5,7 +5,6 @@ import ACFTechnicalCapabilities from '../components/acf/ACFTechnicalCapabilities
 import ACFMissionPortfolio from '../components/acf/ACFMissionPortfolio'
 import ACFIntelligenceHub from '../components/acf/ACFIntelligenceHub'
 import ACFTeamSection from '../components/acf/ACFTeamSection'
-import ContactSection from '../components/sections/ContactSection'
 
 function HomePage() {
   return (
@@ -17,7 +16,6 @@ function HomePage() {
       <ACFMissionPortfolio pageSlug="homepage" />
       <ACFIntelligenceHub pageSlug="homepage" />
       <ACFTeamSection pageSlug="homepage" />
-      <ContactSection />
     </div>
   )
 }
