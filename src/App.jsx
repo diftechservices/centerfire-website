@@ -7,7 +7,9 @@ import DynamicAboutPage from './pages/DynamicAboutPage'
 import ServicesPage from './pages/ServicesPage'
 import ACFServicesPage from './pages/ACFServicesPage'
 import ContactPage from './pages/ContactPage'
+import ACFContactPage from './pages/ACFContactPage'
 import DemoPage from './pages/DemoPage'
+import WordPressTestPage from './pages/WordPressTestPage'
 
 function App() {
   return (
@@ -22,8 +24,9 @@ function App() {
           <Route path="/about-wp" element={<DynamicAboutPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/services-acf" element={<ACFServicesPage />} />
-          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/contact" element={<ACFContactPage />} />
           <Route path="/demo" element={<DemoPage />} />
+          <Route path="/wp-test" element={<WordPressTestPage />} />
         </Routes>
       </main>
     </div>
