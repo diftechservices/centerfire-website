@@ -1,6 +1,6 @@
 import ACFHeroSection from '../components/acf/ACFHeroSection'
 import ACFMissionControl from '../components/acf/ACFMissionControl'
-import AIArsenal from '../components/sections/AIArsenal'
+import ACFAIArsenal from '../components/acf/ACFAIArsenal'
 import TechnicalCapabilities from '../components/sections/TechnicalCapabilities'
 import MissionPortfolio from '../components/sections/MissionPortfolio'
 import IntelligenceHub from '../components/sections/IntelligenceHub'
@@ -12,7 +12,7 @@ function HomePage() {
     <div>
       <ACFHeroSection pageSlug="homepage" />
       <ACFMissionControl pageSlug="homepage" />
-      <AIArsenal />
+      <ACFAIArsenal pageSlug="homepage" />
       <TechnicalCapabilities />
       <MissionPortfolio />
       <IntelligenceHub />
