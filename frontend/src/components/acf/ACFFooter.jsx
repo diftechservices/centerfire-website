@@ -21,19 +21,20 @@ const ACFFooter = ({ pageSlug = 'homepage' }) => {
   // Extract ACF data
   const acf = content?.acf || {}
   const {
-    // Footer Branding
-    footer_logo_url = '/src/assets/images/centerfireweblogo.jpg',
-    footer_company_name = 'Centerfire Digital',
-    footer_mission_statement = 'Deploying precision-engineered digital solutions with tactical excellence and strategic innovation.',
+    // Contact Information (shared with contact page)
+    main_phone = '+1 (555) FIRE-OPS',
+    main_email = 'command@centerfiredigital.com',
+    company_name = 'Centerfire Digital',
+    headquarters = {},
     
-    // Contact Information
-    footer_contact_address = '1234 Tactical Ave, Operations Base, USA 12345',
-    footer_contact_phone = '+1 (555) FIRE-OPS',
-    footer_contact_email = 'command@centerfiredigital.com',
-    
-    // Copyright
+    // Footer specific
     footer_copyright_text = '© 2024 Centerfire Digital. All rights reserved. Mission classified.'
   } = acf
+
+  // Process headquarters address
+  const address = headquarters.address 
+    ? `${headquarters.address}${headquarters.city ? ', ' + headquarters.city : ''}${headquarters.state ? ', ' + headquarters.state : ''}${headquarters.zip ? ' ' + headquarters.zip : ''}`
+    : '1234 Tactical Ave, Operations Base, USA 12345'
 
 
   // Process Footer Columns from ACF flat structure  
@@ -186,15 +187,15 @@ const ACFFooter = ({ pageSlug = 'homepage' }) => {
             <div className="space-y-3 mb-6">
               <div className="flex items-start space-x-3">
                 <i className="fa-solid fa-location-dot text-fire-orange mt-1"></i>
-                <span className="text-gray-300 text-sm">{footer_contact_address}</span>
+                <span className="text-gray-300 text-sm">{address}</span>
               </div>
               <div className="flex items-center space-x-3">
                 <i className="fa-solid fa-phone text-tactical-green"></i>
-                <span className="text-gray-300 text-sm">{footer_contact_phone}</span>
+                <span className="text-gray-300 text-sm">{main_phone}</span>
               </div>
               <div className="flex items-center space-x-3">
                 <i className="fa-solid fa-envelope text-steel-blue"></i>
-                <span className="text-gray-300 text-sm">{footer_contact_email}</span>
+                <span className="text-gray-300 text-sm">{main_email}</span>
               </div>
             </div>
 
