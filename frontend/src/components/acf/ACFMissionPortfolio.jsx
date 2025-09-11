@@ -239,7 +239,7 @@ const ACFMissionPortfolio = ({ pageSlug = 'homepage' }) => {
 
         {/* Final CTA */}
         <div className="text-center">
-          <Button size="lg">
+          <Button size="lg" className="mx-auto">
             {mission_portfolio_cta_button_text}
           </Button>
         </div>
@@ -415,8 +415,8 @@ const FallbackMissionPortfolio = () => {
 
         {/* Final CTA */}
         <div className="text-center">
-          <Button size="lg">
-            View Complete Arsenal
+          <Button size="lg" className="mx-auto">
+            {mission_portfolio_cta_button_text}
           </Button>
         </div>
       </div>
