@@ -2,8 +2,13 @@ import { Button, Badge } from '../ui'
 import { useWordPressPage } from '../../hooks/useWordPress'
 
 const ACFTeamSection = ({ pageSlug }) => {
-  const { acf, loading, error } = useWordPressPage(pageSlug)
+  const { content, loading, error } = useWordPressPage(pageSlug)
 
+  if (loading) return <div>Loading team section...</div>
+  if (error) return <div>Error loading team section: {error.message}</div>
+
+  // Extract ACF data
+  const acf = content?.acf || {}
   const {
     team_section_badge_icon = 'fa-solid fa-users',
     team_section_badge_text = 'TEAM COMMAND STRUCTURE',
@@ -133,9 +138,6 @@ const ACFTeamSection = ({ pageSlug }) => {
       borderColor: 'hover:border-fire-orange'
     }
   ]
-
-  if (loading) return <div>Loading team section...</div>
-  if (error) return <div>Error loading team section: {error.message}</div>
 
   const acfTeamMembers = processTeamMembers(acf)
   const displayTeamMembers = acfTeamMembers.length > 0 ? acfTeamMembers : defaultTeamMembers
