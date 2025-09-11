@@ -1,5 +1,5 @@
 import ACFHeroSection from '../components/acf/ACFHeroSection'
-import MissionControl from '../components/sections/MissionControl'
+import ACFMissionControl from '../components/acf/ACFMissionControl'
 import AIArsenal from '../components/sections/AIArsenal'
 import TechnicalCapabilities from '../components/sections/TechnicalCapabilities'
 import MissionPortfolio from '../components/sections/MissionPortfolio'
@@ -11,7 +11,7 @@ function HomePage() {
   return (
     <div>
       <ACFHeroSection pageSlug="homepage" />
-      <MissionControl />
+      <ACFMissionControl pageSlug="homepage" />
       <AIArsenal />
       <TechnicalCapabilities />
       <MissionPortfolio />
