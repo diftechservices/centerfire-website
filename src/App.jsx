@@ -1,13 +1,13 @@
+import { Routes, Route } from 'react-router-dom'
 import './index.css'
 import Header from './components/sections/Header'
-import HeroSection from './components/sections/HeroSection'
-import MissionControl from './components/sections/MissionControl'
-import AIArsenal from './components/sections/AIArsenal'
-import TechnicalCapabilities from './components/sections/TechnicalCapabilities'
-import MissionPortfolio from './components/sections/MissionPortfolio'
-import IntelligenceHub from './components/sections/IntelligenceHub'
-import TeamSection from './components/sections/TeamSection'
-import ContactSection from './components/sections/ContactSection'
+import HomePage from './pages/HomePage'
+import AboutPage from './pages/AboutPage'
+import DynamicAboutPage from './pages/DynamicAboutPage'
+import ServicesPage from './pages/ServicesPage'
+import ACFServicesPage from './pages/ACFServicesPage'
+import ContactPage from './pages/ContactPage'
+import DemoPage from './pages/DemoPage'
 
 function App() {
   return (
@@ -16,14 +16,15 @@ function App() {
       
       {/* Main content with padding for fixed header */}
       <main className="pt-20">
-        <HeroSection />
-        <MissionControl />
-        <AIArsenal />
-        <TechnicalCapabilities />
-        <MissionPortfolio />
-        <IntelligenceHub />
-        <TeamSection />
-        <ContactSection />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/about-wp" element={<DynamicAboutPage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/services-acf" element={<ACFServicesPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/demo" element={<DemoPage />} />
+        </Routes>
       </main>
     </div>
   )

@@ -1,11 +1,14 @@
+import { Link, useLocation } from 'react-router-dom'
 import { Button, StatusIndicator } from '../ui'
 
 const Header = () => {
+  const location = useLocation()
+  
   const navigationItems = [
-    { icon: 'fa-solid fa-brain', label: 'AI Solutions' },
-    { icon: 'fa-solid fa-shield-halved', label: 'Capabilities' },
-    { icon: 'fa-solid fa-trophy', label: 'Portfolio' },
-    { icon: 'fa-solid fa-satellite-dish', label: 'Intel Hub' }
+    { icon: 'fa-solid fa-home', label: 'Home', path: '/' },
+    { icon: 'fa-solid fa-shield-halved', label: 'About', path: '/about' },
+    { icon: 'fa-solid fa-brain', label: 'Services', path: '/services' },
+    { icon: 'fa-solid fa-satellite-dish', label: 'Contact', path: '/contact' }
   ]
 
   return (
@@ -16,23 +19,30 @@ const Header = () => {
           <div className="flex items-center space-x-8">
             {/* Logo */}
             <div className="flex items-center space-x-3">
-              <img 
-                src="/src/assets/images/centerfireweblogo.jpg" 
-                alt="Centerfire Digital" 
-                className="w-44 h-auto"
-              />
+              <Link to="/">
+                <img 
+                  src="/src/assets/images/centerfireweblogo.jpg" 
+                  alt="Centerfire Digital" 
+                  className="w-44 h-auto cursor-pointer"
+                />
+              </Link>
             </div>
             
             {/* Navigation Menu */}
             <div className="hidden lg:flex items-center space-x-8">
               {navigationItems.map((item, index) => (
-                <span 
+                <Link 
                   key={index}
-                  className="text-gray-300 hover:text-fire-orange transition-colors flex items-center space-x-2 cursor-pointer"
+                  to={item.path}
+                  className={`transition-colors flex items-center space-x-2 ${
+                    location.pathname === item.path 
+                      ? 'text-fire-orange' 
+                      : 'text-gray-300 hover:text-fire-orange'
+                  }`}
                 >
                   <i className={`${item.icon} text-sm`}></i>
                   <span>{item.label}</span>
-                </span>
+                </Link>
               ))}
             </div>
           </div>
