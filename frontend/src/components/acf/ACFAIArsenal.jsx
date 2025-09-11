@@ -27,15 +27,60 @@ const ACFAIArsenal = ({ pageSlug = 'homepage' }) => {
     ai_arsenal_title_line2 = 'WEAPONS SYSTEMS',
     ai_arsenal_description = 'Advanced AI technologies deployed with military precision to dominate your competitive landscape and achieve tactical superiority',
     
-    // AI Services
-    ai_services = [],
-    
     // Custom AI Section
     custom_ai_title = 'Custom AI Development',
     custom_ai_description = 'Need a specialized AI solution? Our elite development team creates bespoke artificial intelligence systems tailored to your exact specifications and operational requirements.',
-    custom_ai_button_text = 'Request Custom AI',
-    custom_ai_tags = []
+    custom_ai_button_text = 'Request Custom AI'
   } = acf
+
+  // Process AI Services from ACF flat structure
+  const processAIServices = (acfData) => {
+    const services = []
+    let serviceIndex = 0
+    
+    while (acfData[`ai_services_${serviceIndex}_title`]) {
+      const service = {
+        icon: acfData[`ai_services_${serviceIndex}_icon`],
+        icon_color: acfData[`ai_services_${serviceIndex}_icon_color`],
+        icon_bg: acfData[`ai_services_${serviceIndex}_icon_bg`],
+        title: acfData[`ai_services_${serviceIndex}_title`],
+        subtitle: acfData[`ai_services_${serviceIndex}_subtitle`],
+        description: acfData[`ai_services_${serviceIndex}_description`],
+        button_text: acfData[`ai_services_${serviceIndex}_button_text`],
+        button_variant: acfData[`ai_services_${serviceIndex}_button_variant`],
+        button_class: acfData[`ai_services_${serviceIndex}_button_class`],
+        features: []
+      }
+      
+      // Process features for this service
+      let featureIndex = 0
+      while (acfData[`ai_services_${serviceIndex}_features_${featureIndex}_feature_text`]) {
+        service.features.push(acfData[`ai_services_${serviceIndex}_features_${featureIndex}_feature_text`])
+        featureIndex++
+      }
+      
+      services.push(service)
+      serviceIndex++
+    }
+    
+    return services
+  }
+
+  // Process Custom AI Tags from ACF flat structure
+  const processCustomAITags = (acfData) => {
+    const tags = []
+    let tagIndex = 0
+    
+    while (acfData[`custom_ai_tags_${tagIndex}_tag_text`]) {
+      tags.push(acfData[`custom_ai_tags_${tagIndex}_tag_text`])
+      tagIndex++
+    }
+    
+    return tags
+  }
+
+  const acfServices = processAIServices(acf)
+  const acfTags = processCustomAITags(acf)
 
   // Default AI services (exact current content)
   const defaultAIServices = [
@@ -110,8 +155,8 @@ const ACFAIArsenal = ({ pageSlug = 'homepage' }) => {
     'Transfer Learning'
   ]
 
-  const displayServices = ai_services.length > 0 ? ai_services : defaultAIServices
-  const displayTags = custom_ai_tags.length > 0 ? custom_ai_tags : defaultCustomAITags
+  const displayServices = acfServices.length > 0 ? acfServices : defaultAIServices
+  const displayTags = acfTags.length > 0 ? acfTags : defaultCustomAITags
 
   return (
     <section className="py-20 bg-tactical-dark">
