@@ -3,7 +3,7 @@ import ACFMissionControl from '../components/acf/ACFMissionControl'
 import ACFAIArsenal from '../components/acf/ACFAIArsenal'
 import ACFTechnicalCapabilities from '../components/acf/ACFTechnicalCapabilities'
 import ACFMissionPortfolio from '../components/acf/ACFMissionPortfolio'
-import IntelligenceHub from '../components/sections/IntelligenceHub'
+import ACFIntelligenceHub from '../components/acf/ACFIntelligenceHub'
 import TeamSection from '../components/sections/TeamSection'
 import ContactSection from '../components/sections/ContactSection'
 
@@ -15,7 +15,7 @@ function HomePage() {
       <ACFAIArsenal pageSlug="homepage" />
       <ACFTechnicalCapabilities pageSlug="homepage" />
       <ACFMissionPortfolio pageSlug="homepage" />
-      <IntelligenceHub />
+      <ACFIntelligenceHub pageSlug="homepage" />
       <TeamSection />
       <ContactSection />
     </div>
