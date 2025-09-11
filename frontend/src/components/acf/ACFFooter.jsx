@@ -199,19 +199,28 @@ const ACFFooter = ({ pageSlug = 'homepage' }) => {
               </div>
             </div>
 
-            {/* Social Media */}
-            <div className="flex flex-wrap gap-3">
-              {displaySocialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-8 h-8 bg-tactical-gray border border-tactical-light rounded-lg flex items-center justify-center hover:bg-fire-orange hover:border-fire-orange transition-all group"
-                >
-                  <i className={`${social.icon} text-xs text-gray-300 group-hover:text-tactical-dark`}></i>
-                </a>
-              ))}
+            {/* Contact CTA & Social Media */}
+            <div className="space-y-4">
+              <Link
+                to="/contact"
+                className="inline-block bg-fire-orange hover:bg-fire-orange/90 text-tactical-dark font-semibold px-4 py-2 rounded-lg transition-colors"
+              >
+                Contact Us
+              </Link>
+              
+              <div className="flex flex-wrap gap-3">
+                {displaySocialLinks.map((social, index) => (
+                  <a
+                    key={index}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-8 h-8 bg-tactical-gray border border-tactical-light rounded-lg flex items-center justify-center hover:bg-fire-orange hover:border-fire-orange transition-all group"
+                  >
+                    <i className={`${social.icon} text-xs text-gray-300 group-hover:text-tactical-dark`}></i>
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -344,19 +353,28 @@ const FallbackFooter = () => {
               </div>
             </div>
 
-            {/* Social Media */}
-            <div className="flex flex-wrap gap-3">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-8 h-8 bg-tactical-gray border border-tactical-light rounded-lg flex items-center justify-center hover:bg-fire-orange hover:border-fire-orange transition-all group"
-                >
-                  <i className={`${social.icon} text-xs text-gray-300 group-hover:text-tactical-dark`}></i>
-                </a>
-              ))}
+            {/* Contact CTA & Social Media */}
+            <div className="space-y-4">
+              <Link
+                to="/contact"
+                className="inline-block bg-fire-orange hover:bg-fire-orange/90 text-tactical-dark font-semibold px-4 py-2 rounded-lg transition-colors"
+              >
+                Contact Us
+              </Link>
+              
+              <div className="flex flex-wrap gap-3">
+                {socialLinks.map((social, index) => (
+                  <a
+                    key={index}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-8 h-8 bg-tactical-gray border border-tactical-light rounded-lg flex items-center justify-center hover:bg-fire-orange hover:border-fire-orange transition-all group"
+                  >
+                    <i className={`${social.icon} text-xs text-gray-300 group-hover:text-tactical-dark`}></i>
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
