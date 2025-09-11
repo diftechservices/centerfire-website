@@ -35,24 +35,6 @@ const ACFFooter = ({ pageSlug = 'homepage' }) => {
     footer_copyright_text = '© 2024 Centerfire Digital. All rights reserved. Mission classified.'
   } = acf
 
-  // Process Footer Navigation Links from ACF flat structure
-  const processFooterNavLinks = (acfData) => {
-    const links = []
-    let linkIndex = 0
-    
-    while (acfData[`footer_nav_links_${linkIndex}_text`]) {
-      const link = {
-        text: acfData[`footer_nav_links_${linkIndex}_text`],
-        url: acfData[`footer_nav_links_${linkIndex}_url`],
-        icon: acfData[`footer_nav_links_${linkIndex}_icon`]
-      }
-      
-      links.push(link)
-      linkIndex++
-    }
-    
-    return links
-  }
 
   // Process Footer Columns from ACF flat structure  
   const processFooterColumns = (acfData) => {
@@ -119,18 +101,9 @@ const ACFFooter = ({ pageSlug = 'homepage' }) => {
     return links
   }
 
-  const acfNavLinks = processFooterNavLinks(acf)
   const acfColumns = processFooterColumns(acf)
   const acfSocialLinks = processSocialLinks(acf)
   const acfLegalLinks = processLegalLinks(acf)
-
-  // Default data arrays
-  const defaultNavLinks = [
-    { text: 'Home', url: '/', icon: 'fa-solid fa-home' },
-    { text: 'About', url: '/about', icon: 'fa-solid fa-shield-halved' },
-    { text: 'Services', url: '/services', icon: 'fa-solid fa-brain' },
-    { text: 'Contact', url: '/contact', icon: 'fa-solid fa-satellite-dish' }
-  ]
 
   const defaultColumns = [
     {
@@ -175,7 +148,6 @@ const ACFFooter = ({ pageSlug = 'homepage' }) => {
     { text: 'Security', url: '/security' }
   ]
 
-  const displayNavLinks = acfNavLinks.length > 0 ? acfNavLinks : defaultNavLinks
   const displayColumns = acfColumns.length > 0 ? acfColumns : defaultColumns
   const displaySocialLinks = acfSocialLinks.length > 0 ? acfSocialLinks : defaultSocialLinks
   const displayLegalLinks = acfLegalLinks.length > 0 ? acfLegalLinks : defaultLegalLinks
@@ -184,80 +156,9 @@ const ACFFooter = ({ pageSlug = 'homepage' }) => {
     <footer className="bg-tactical-dark border-t border-tactical-light">
       {/* Main Footer Content */}
       <div className="container mx-auto px-6 py-12">
-        {/* Top Section - Branding & Mission */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-          {/* Company Branding */}
-          <div className="lg:col-span-1">
-            <div className="flex items-center space-x-3 mb-6">
-              <img 
-                src={footer_logo_url}
-                alt={footer_company_name}
-                className="w-32 h-auto"
-              />
-            </div>
-            <h3 className="font-display font-bold text-xl text-white mb-4">{footer_company_name}</h3>
-            <p className="text-gray-300 mb-6 leading-relaxed">
-              {footer_mission_statement}
-            </p>
-            
-            {/* Contact Info */}
-            <div className="space-y-3">
-              <div className="flex items-center space-x-3">
-                <i className="fa-solid fa-location-dot text-fire-orange"></i>
-                <span className="text-gray-300 text-sm">{footer_contact_address}</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <i className="fa-solid fa-phone text-tactical-green"></i>
-                <span className="text-gray-300 text-sm">{footer_contact_phone}</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <i className="fa-solid fa-envelope text-steel-blue"></i>
-                <span className="text-gray-300 text-sm">{footer_contact_email}</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Navigation Links */}
-          <div className="lg:col-span-1">
-            <h4 className="font-display font-bold text-lg text-white mb-6">Quick Navigation</h4>
-            <div className="grid grid-cols-2 gap-3">
-              {displayNavLinks.map((link, index) => (
-                <Link
-                  key={index}
-                  to={link.url}
-                  className="flex items-center space-x-2 text-gray-300 hover:text-fire-orange transition-colors group"
-                >
-                  <i className={`${link.icon || 'fa-solid fa-arrow-right'} text-xs group-hover:text-fire-orange`}></i>
-                  <span className="text-sm">{link.text}</span>
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* Social Media */}
-          <div className="lg:col-span-1">
-            <h4 className="font-display font-bold text-lg text-white mb-6">Connect With Command</h4>
-            <div className="flex flex-wrap gap-4 mb-6">
-              {displaySocialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-tactical-gray border border-tactical-light rounded-lg flex items-center justify-center hover:bg-fire-orange hover:border-fire-orange transition-all group"
-                >
-                  <i className={`${social.icon} text-gray-300 group-hover:text-tactical-dark`}></i>
-                </a>
-              ))}
-            </div>
-            <p className="text-gray-400 text-sm">
-              Stay updated on our latest tactical operations and digital warfare innovations.
-            </p>
-          </div>
-        </div>
-
-        {/* Middle Section - Service Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 pt-8 border-t border-tactical-light">
+        {/* Single Section - Service Columns & Contact */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          {/* Service Columns */}
           {displayColumns.map((column, columnIndex) => (
             <div key={columnIndex}>
               <h4 className="font-display font-bold text-lg text-white mb-6">{column.title}</h4>
@@ -276,6 +177,42 @@ const ACFFooter = ({ pageSlug = 'homepage' }) => {
               </ul>
             </div>
           ))}
+
+          {/* Contact & Social Column */}
+          <div>
+            <h4 className="font-display font-bold text-lg text-white mb-6">Contact Command</h4>
+            
+            {/* Contact Info */}
+            <div className="space-y-3 mb-6">
+              <div className="flex items-start space-x-3">
+                <i className="fa-solid fa-location-dot text-fire-orange mt-1"></i>
+                <span className="text-gray-300 text-sm">{footer_contact_address}</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <i className="fa-solid fa-phone text-tactical-green"></i>
+                <span className="text-gray-300 text-sm">{footer_contact_phone}</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <i className="fa-solid fa-envelope text-steel-blue"></i>
+                <span className="text-gray-300 text-sm">{footer_contact_email}</span>
+              </div>
+            </div>
+
+            {/* Social Media */}
+            <div className="flex flex-wrap gap-3">
+              {displaySocialLinks.map((social, index) => (
+                <a
+                  key={index}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 bg-tactical-gray border border-tactical-light rounded-lg flex items-center justify-center hover:bg-fire-orange hover:border-fire-orange transition-all group"
+                >
+                  <i className={`${social.icon} text-xs text-gray-300 group-hover:text-tactical-dark`}></i>
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
@@ -306,12 +243,6 @@ const ACFFooter = ({ pageSlug = 'homepage' }) => {
 
 // Fallback component when WordPress isn't connected
 const FallbackFooter = () => {
-  const navigationItems = [
-    { text: 'Home', url: '/', icon: 'fa-solid fa-home' },
-    { text: 'About', url: '/about', icon: 'fa-solid fa-shield-halved' },
-    { text: 'Services', url: '/services', icon: 'fa-solid fa-brain' },
-    { text: 'Contact', url: '/contact', icon: 'fa-solid fa-satellite-dish' }
-  ]
 
   const serviceColumns = [
     {
@@ -370,80 +301,9 @@ const FallbackFooter = () => {
 
       {/* Main Footer Content */}
       <div className="container mx-auto px-6 py-12">
-        {/* Top Section - Branding & Mission */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-          {/* Company Branding */}
-          <div className="lg:col-span-1">
-            <div className="flex items-center space-x-3 mb-6">
-              <img 
-                src="/src/assets/images/centerfireweblogo.jpg"
-                alt="Centerfire Digital"
-                className="w-32 h-auto"
-              />
-            </div>
-            <h3 className="font-display font-bold text-xl text-white mb-4">Centerfire Digital</h3>
-            <p className="text-gray-300 mb-6 leading-relaxed">
-              Deploying precision-engineered digital solutions with tactical excellence and strategic innovation.
-            </p>
-            
-            {/* Contact Info */}
-            <div className="space-y-3">
-              <div className="flex items-center space-x-3">
-                <i className="fa-solid fa-location-dot text-fire-orange"></i>
-                <span className="text-gray-300 text-sm">1234 Tactical Ave, Operations Base, USA 12345</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <i className="fa-solid fa-phone text-tactical-green"></i>
-                <span className="text-gray-300 text-sm">+1 (555) FIRE-OPS</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <i className="fa-solid fa-envelope text-steel-blue"></i>
-                <span className="text-gray-300 text-sm">command@centerfiredigital.com</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Navigation Links */}
-          <div className="lg:col-span-1">
-            <h4 className="font-display font-bold text-lg text-white mb-6">Quick Navigation</h4>
-            <div className="grid grid-cols-2 gap-3">
-              {navigationItems.map((link, index) => (
-                <Link
-                  key={index}
-                  to={link.url}
-                  className="flex items-center space-x-2 text-gray-300 hover:text-fire-orange transition-colors group"
-                >
-                  <i className={`${link.icon} text-xs group-hover:text-fire-orange`}></i>
-                  <span className="text-sm">{link.text}</span>
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* Social Media */}
-          <div className="lg:col-span-1">
-            <h4 className="font-display font-bold text-lg text-white mb-6">Connect With Command</h4>
-            <div className="flex flex-wrap gap-4 mb-6">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-tactical-gray border border-tactical-light rounded-lg flex items-center justify-center hover:bg-fire-orange hover:border-fire-orange transition-all group"
-                >
-                  <i className={`${social.icon} text-gray-300 group-hover:text-tactical-dark`}></i>
-                </a>
-              ))}
-            </div>
-            <p className="text-gray-400 text-sm">
-              Stay updated on our latest tactical operations and digital warfare innovations.
-            </p>
-          </div>
-        </div>
-
-        {/* Middle Section - Service Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 pt-8 border-t border-tactical-light">
+        {/* Single Section - Service Columns & Contact */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          {/* Service Columns */}
           {serviceColumns.map((column, columnIndex) => (
             <div key={columnIndex}>
               <h4 className="font-display font-bold text-lg text-white mb-6">{column.title}</h4>
@@ -462,6 +322,42 @@ const FallbackFooter = () => {
               </ul>
             </div>
           ))}
+
+          {/* Contact & Social Column */}
+          <div>
+            <h4 className="font-display font-bold text-lg text-white mb-6">Contact Command</h4>
+            
+            {/* Contact Info */}
+            <div className="space-y-3 mb-6">
+              <div className="flex items-start space-x-3">
+                <i className="fa-solid fa-location-dot text-fire-orange mt-1"></i>
+                <span className="text-gray-300 text-sm">1234 Tactical Ave, Operations Base, USA 12345</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <i className="fa-solid fa-phone text-tactical-green"></i>
+                <span className="text-gray-300 text-sm">+1 (555) FIRE-OPS</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <i className="fa-solid fa-envelope text-steel-blue"></i>
+                <span className="text-gray-300 text-sm">command@centerfiredigital.com</span>
+              </div>
+            </div>
+
+            {/* Social Media */}
+            <div className="flex flex-wrap gap-3">
+              {socialLinks.map((social, index) => (
+                <a
+                  key={index}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 bg-tactical-gray border border-tactical-light rounded-lg flex items-center justify-center hover:bg-fire-orange hover:border-fire-orange transition-all group"
+                >
+                  <i className={`${social.icon} text-xs text-gray-300 group-hover:text-tactical-dark`}></i>
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
