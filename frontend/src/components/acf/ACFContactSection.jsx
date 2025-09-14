@@ -109,9 +109,6 @@ const ACFContactSection = ({ pageSlug = 'contact' }) => {
     return (
       <section className="py-20 bg-tactical-gray">
         <div className="container mx-auto px-6">
-          <div className="bg-yellow-900/20 border border-yellow-600 rounded-lg p-6 max-w-2xl mx-auto mb-8">
-            <p className="text-yellow-400 text-center">Using fallback contact info - WordPress not connected</p>
-          </div>
           <FallbackContactContent contactInfo={contactInfo} />
         </div>
       </section>
@@ -514,9 +511,6 @@ const FallbackContactContent = ({ contactInfo }) => (
       <h3 className="font-display font-bold text-2xl text-white mb-6">
         Send a Message
       </h3>
-      <p className="text-gray-300 mb-4">
-        This is fallback content. Connect to WordPress to see dynamic contact form.
-      </p>
     </div>
   </div>
 )

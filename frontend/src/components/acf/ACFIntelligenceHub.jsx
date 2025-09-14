@@ -487,12 +487,6 @@ const FallbackIntelligenceHub = () => {
   return (
     <section className="py-20 bg-tactical-gray">
       <div className="container mx-auto px-6">
-        <div className="bg-yellow-900/20 border border-yellow-600 rounded-lg p-4 max-w-2xl mx-auto mb-8">
-          <p className="text-yellow-400 text-center text-sm">
-            <i className="fa-solid fa-exclamation-triangle mr-2"></i>
-            Using fallback Intelligence Hub content - WordPress not connected
-          </p>
-        </div>
 
         {/* Section Header */}
         <div className="text-center mb-16">

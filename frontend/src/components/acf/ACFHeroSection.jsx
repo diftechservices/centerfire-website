@@ -208,12 +208,6 @@ const FallbackHeroSection = () => {
       
       {/* Main content */}
       <div className="relative z-10 container mx-auto px-6 text-center">
-        <div className="bg-yellow-900/20 border border-yellow-600 rounded-lg p-4 max-w-2xl mx-auto mb-8">
-          <p className="text-yellow-400 text-center text-sm">
-            <i className="fa-solid fa-exclamation-triangle mr-2"></i>
-            Using fallback hero content - WordPress not connected
-          </p>
-        </div>
 
         {/* Tactical operation badge */}
         <div className="mb-8 flex justify-center">

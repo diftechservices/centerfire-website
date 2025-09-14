@@ -294,15 +294,6 @@ const FallbackFooter = () => {
 
   return (
     <footer className="bg-tactical-dark border-t border-tactical-light">
-      {/* WordPress disconnected warning */}
-      <div className="bg-yellow-900/20 border-b border-yellow-600">
-        <div className="container mx-auto px-6 py-3">
-          <p className="text-yellow-400 text-center text-sm">
-            <i className="fa-solid fa-exclamation-triangle mr-2"></i>
-            Using fallback footer content - WordPress not connected
-          </p>
-        </div>
-      </div>
 
       {/* Main Footer Content */}
       <div className="container mx-auto px-6 py-12">

@@ -20,9 +20,6 @@ const ACFServicesSection = ({ pageSlug = 'services' }) => {
     return (
       <section className="py-20 bg-tactical-gray">
         <div className="container mx-auto px-6 text-center">
-          <div className="bg-yellow-900/20 border border-yellow-600 rounded-lg p-6 max-w-2xl mx-auto">
-            <p className="text-yellow-400">Using fallback content - WordPress not connected</p>
-          </div>
         </div>
       </section>
     )
