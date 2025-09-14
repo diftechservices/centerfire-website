@@ -14,35 +14,9 @@ function DynamicAboutPage() {
     )
   }
 
-  if (error) {
-    return (
-      <div className="section bg-tactical-gray py-16">
-        <div className="section-content text-center">
-          <div className="bg-red-900/20 border border-red-600 rounded-lg p-6 max-w-2xl mx-auto">
-            <h2 className="text-red-400 text-xl font-bold mb-2">Connection Error</h2>
-            <p className="text-gray-300">
-              Unable to load content from WordPress. Using fallback content.
-            </p>
-            <p className="text-sm text-gray-400 mt-2">Error: {error}</p>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  if (!content) {
-    return (
-      <div className="section bg-tactical-gray py-16">
-        <div className="section-content text-center">
-          <div className="bg-yellow-900/20 border border-yellow-600 rounded-lg p-6 max-w-2xl mx-auto">
-            <h2 className="text-yellow-400 text-xl font-bold mb-2">No Content Found</h2>
-            <p className="text-gray-300">
-              No 'about' page found in WordPress. Please create an About page with slug 'about'.
-            </p>
-          </div>
-        </div>
-      </div>
-    )
+  if (error || !content) {
+    // Show fallback content instead of error messages
+    return <FallbackAboutPage />
   }
 
   return (
@@ -83,5 +57,86 @@ function DynamicAboutPage() {
     </div>
   )
 }
+
+// Fallback About content when WordPress isn't connected
+const FallbackAboutPage = () => (
+  <div className="py-20 bg-tactical-gray">
+    <div className="container mx-auto px-6">
+      {/* Section Header */}
+      <div className="text-center mb-16">
+        <div className="inline-flex items-center space-x-3 bg-tactical-dark rounded-full px-6 py-3 mb-6">
+          <i className="fa-solid fa-shield-halved text-fire-orange"></i>
+          <span className="font-display text-sm tracking-wider text-white">COMPANY INTEL</span>
+        </div>
+
+        <h1 className="font-display font-black text-5xl lg:text-6xl mb-6">
+          <span className="text-white">ABOUT CENTERFIRE</span>
+        </h1>
+
+        <p className="text-xl text-gray-300 max-w-4xl mx-auto">
+          American-built technology for businesses that refuse to compromise
+        </p>
+      </div>
+
+      <div className="max-w-4xl mx-auto space-y-12">
+        {/* Mission Section */}
+        <div className="bg-tactical-dark border border-tactical-light rounded-xl p-8">
+          <h2 className="font-display font-bold text-2xl text-white mb-6">Our Mission</h2>
+          <p className="text-gray-300 text-lg leading-relaxed">
+            We deliver precision-engineered AI and technology solutions to American businesses that build,
+            make, and defend. No offshore teams, no political agendas, no compromises—just results-driven
+            technology built by professionals who understand what's at stake.
+          </p>
+        </div>
+
+        {/* Values Section */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="bg-tactical-dark border border-tactical-light rounded-xl p-6">
+            <div className="text-fire-orange text-2xl mb-4">
+              <i className="fa-solid fa-flag-usa"></i>
+            </div>
+            <h3 className="font-display font-bold text-lg text-white mb-3">American Built</h3>
+            <p className="text-gray-300">All development on US soil by US citizens. No offshore risks.</p>
+          </div>
+
+          <div className="bg-tactical-dark border border-tactical-light rounded-xl p-6">
+            <div className="text-steel-blue text-2xl mb-4">
+              <i className="fa-solid fa-medal"></i>
+            </div>
+            <h3 className="font-display font-bold text-lg text-white mb-3">Merit-Based</h3>
+            <p className="text-gray-300">We hire on skill and character, not quotas or ideology.</p>
+          </div>
+
+          <div className="bg-tactical-dark border border-tactical-light rounded-xl p-6">
+            <div className="text-tactical-green text-2xl mb-4">
+              <i className="fa-solid fa-industry"></i>
+            </div>
+            <h3 className="font-display font-bold text-lg text-white mb-3">Real Industries</h3>
+            <p className="text-gray-300">We work with companies that build things that matter.</p>
+          </div>
+        </div>
+
+        {/* Team Section */}
+        <div className="bg-tactical-dark border border-tactical-light rounded-xl p-8">
+          <h2 className="font-display font-bold text-2xl text-white mb-6">Elite Team</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div>
+              <h4 className="font-semibold text-white mb-2">Leadership</h4>
+              <p className="text-gray-300">Marine Corps veterans with decades of technology experience</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-white mb-2">Engineering</h4>
+              <p className="text-gray-300">Senior developers who've built systems for defense and enterprise</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-white mb-2">Security</h4>
+              <p className="text-gray-300">Former military cybersecurity specialists</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+)
 
 export default DynamicAboutPage
