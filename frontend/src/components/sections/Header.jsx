@@ -8,7 +8,7 @@ const Header = () => {
     { icon: 'fa-solid fa-home', label: 'Home', path: '/' },
     { icon: 'fa-solid fa-shield-halved', label: 'About', path: '/about' },
     { icon: 'fa-solid fa-brain', label: 'Services', path: '/services' },
-    { icon: 'fa-solid fa-satellite-dish', label: 'Contact', path: '/contact-acf' }
+    { icon: 'fa-solid fa-satellite-dish', label: 'Contact', path: '/contact' }
   ]
 
   return (

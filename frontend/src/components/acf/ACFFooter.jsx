@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
 import { useWordPressPage } from '../../hooks/useWordPress'
+import { useContactInfo } from '../../hooks/useContactInfo'
 
 const ACFFooter = ({ pageSlug = 'homepage' }) => {
   const { content, loading, error } = useWordPressPage(pageSlug)
+  const { contactInfo } = useContactInfo()
 
   if (loading) {
     return (
@@ -22,9 +24,9 @@ const ACFFooter = ({ pageSlug = 'homepage' }) => {
   const acf = content?.acf || {}
   const {
     // Contact Information (shared with contact page)
-    main_phone = '+1 (555) FIRE-OPS',
-    main_email = 'command@centerfiredigital.com',
-    company_name = 'Centerfire Digital',
+    main_phone = contactInfo.main_phone,
+    main_email = contactInfo.main_email,
+    company_name = contactInfo.company_name,
     headquarters = {},
     
     // Footer specific
@@ -185,27 +187,20 @@ const ACFFooter = ({ pageSlug = 'homepage' }) => {
             
             {/* Contact Info */}
             <div className="space-y-3 mb-6">
-              <div className="flex items-start space-x-3">
-                <i className="fa-solid fa-location-dot text-fire-orange mt-1"></i>
-                <span className="text-gray-300 text-sm">{address}</span>
-              </div>
               <div className="flex items-center space-x-3">
                 <i className="fa-solid fa-phone text-tactical-green"></i>
                 <span className="text-gray-300 text-sm">{main_phone}</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <i className="fa-solid fa-envelope text-steel-blue"></i>
-                <span className="text-gray-300 text-sm">{main_email}</span>
               </div>
             </div>
 
             {/* Contact CTA & Social Media */}
             <div className="space-y-4">
+              <div className="text-gray-400 text-sm text-center">or</div>
               <Link
                 to="/contact"
                 className="inline-block bg-fire-orange hover:bg-fire-orange/90 text-tactical-dark font-semibold px-4 py-2 rounded-lg transition-colors"
               >
-                Contact Us
+                Send a Message
               </Link>
               
               <div className="flex flex-wrap gap-3">
@@ -355,11 +350,12 @@ const FallbackFooter = () => {
 
             {/* Contact CTA & Social Media */}
             <div className="space-y-4">
+              <div className="text-gray-400 text-sm text-center">or</div>
               <Link
                 to="/contact"
                 className="inline-block bg-fire-orange hover:bg-fire-orange/90 text-tactical-dark font-semibold px-4 py-2 rounded-lg transition-colors"
               >
-                Contact Us
+                Send a Message
               </Link>
               
               <div className="flex flex-wrap gap-3">

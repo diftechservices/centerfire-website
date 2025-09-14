@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import { useWordPressPage } from '../../hooks/useWordPress'
+import { useContactInfo } from '../../hooks/useContactInfo'
 import { Button } from '../ui'
 
 const ACFContactSection = ({ pageSlug = 'contact' }) => {
   const { content, loading, error } = useWordPressPage(pageSlug)
+  const { contactInfo } = useContactInfo()
   
   // Form state
   const [formData, setFormData] = useState({
@@ -110,7 +112,7 @@ const ACFContactSection = ({ pageSlug = 'contact' }) => {
           <div className="bg-yellow-900/20 border border-yellow-600 rounded-lg p-6 max-w-2xl mx-auto mb-8">
             <p className="text-yellow-400 text-center">Using fallback contact info - WordPress not connected</p>
           </div>
-          <FallbackContactContent />
+          <FallbackContactContent contactInfo={contactInfo} />
         </div>
       </section>
     )
@@ -123,13 +125,13 @@ const ACFContactSection = ({ pageSlug = 'contact' }) => {
     page_subtitle = 'Get in touch with our tactical team',
     
     // Contact Information
-    company_name = 'Centerfire Digital',
-    main_phone = '+1 (555) 247-FIRE',
-    main_email = null, // No email display
-    support_email = null, // No email display
-    
+    company_name = contactInfo.company_name,
+    main_phone = contactInfo.main_phone,
+    main_email = contactInfo.main_email,
+    support_email = contactInfo.support_email,
+
     // Business Hours
-    business_hours = 'Monday - Friday: 8:00 AM - 6:00 PM PST',
+    business_hours = contactInfo.business_hours,
     emergency_contact = null, // No emergency contact display
     
     // Address Information
@@ -495,16 +497,16 @@ const ACFContactSection = ({ pageSlug = 'contact' }) => {
 }
 
 // Fallback content when WordPress isn't connected
-const FallbackContactContent = () => (
+const FallbackContactContent = ({ contactInfo }) => (
   <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
     <div className="bg-tactical-dark border border-tactical-light rounded-xl p-8">
       <h3 className="font-display font-bold text-2xl text-white mb-6">
         Contact Information
       </h3>
       <div className="space-y-4 text-gray-300">
-        <div>📞 +1 (555) 247-FIRE</div>
-        <div>✉️ contact@centerfiredigital.com</div>
-        <div>🕒 Monday - Friday: 8:00 AM - 6:00 PM PST</div>
+        <div>📞 {contactInfo.main_phone}</div>
+        <div>✉️ {contactInfo.main_email}</div>
+        <div>🕒 {contactInfo.business_hours}</div>
       </div>
     </div>
     

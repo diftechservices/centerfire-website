@@ -21,9 +21,9 @@ function App() {
       <main className="pt-20">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
+          <Route path="/about" element={<DynamicAboutPage />} />
           <Route path="/about-wp" element={<DynamicAboutPage />} />
-          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/services" element={<ACFServicesPage />} />
           <Route path="/services-acf" element={<ACFServicesPage />} />
           <Route path="/contact" element={<ACFContactPage />} />
           <Route path="/demo" element={<DemoPage />} />

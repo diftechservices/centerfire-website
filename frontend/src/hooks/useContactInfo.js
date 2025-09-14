@@ -6,11 +6,11 @@ export const useContactInfo = () => {
   // Default/fallback contact information
   const defaultContact = {
     company_name: 'Centerfire Digital',
-    main_phone: '+1 (555) 247-FIRE',
-    main_email: 'contact@centerfiredigital.com',
+    main_phone: '(512)744-1700',
+    main_email: 'sales@centerfiredigital.com',
     support_email: 'support@centerfiredigital.com',
-    business_hours: 'Monday - Friday: 8:00 AM - 6:00 PM PST',
-    emergency_contact: '+1 (555) 911-FIRE',
+    business_hours: 'Monday - Friday: 9:00 AM - 6:00 PM PST',
+    emergency_contact: '(512)744-1700',
     headquarters: null, // No physical address - keep structure for future use
     social_links: {
       linkedin: 'https://linkedin.com/company/centerfire-digital',
