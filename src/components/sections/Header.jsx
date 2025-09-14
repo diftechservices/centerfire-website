@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import { Button, StatusIndicator } from '../ui'
+import logo from '../../assets/images/centerfireweblogo.jpg'
 
 const Header = () => {
   const location = useLocation()
@@ -21,7 +22,7 @@ const Header = () => {
             <div className="flex items-center space-x-3">
               <Link to="/">
                 <img 
-                  src="/src/assets/images/centerfireweblogo.jpg" 
+                  src={logo} 
                   alt="Centerfire Digital" 
                   className="w-44 h-auto cursor-pointer"
                 />
